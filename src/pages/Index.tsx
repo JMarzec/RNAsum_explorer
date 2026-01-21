@@ -32,7 +32,7 @@ const Index = () => {
         <ReportSidebar activeSection={activeSection} onSectionChange={handleSectionChange} />
         
         {/* Main content area */}
-        <main className="flex-1 overflow-y-auto p-8">
+        <main id="report-content" className="flex-1 overflow-y-auto p-8 bg-background">
           <FindingsSummary />
           <MutatedGenesSection />
           <FusionGenesSection />

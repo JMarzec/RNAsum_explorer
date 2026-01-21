@@ -2,6 +2,7 @@ import { SampleInfo } from '@/data/mockRNAsumData';
 import { ChevronDown } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { useState } from 'react';
+import { PdfExportButton } from './PdfExportButton';
 
 interface ReportHeaderProps {
   sample: SampleInfo;
@@ -12,16 +13,11 @@ export function ReportHeader({ sample }: ReportHeaderProps) {
 
   return (
     <header className="border-b border-border bg-card">
-      <div className="px-8 py-6">
+      <div className="px-8 py-6 flex items-center justify-between">
         <h1 className="text-3xl font-bold text-foreground">
-          Patient Transcriptome Summary
+          Patient Molecular Profiling
         </h1>
-        <p className="text-sm text-muted-foreground mt-1">UMCCR</p>
-        <p className="text-sm font-medium text-primary mt-1">{sample.analysisDate}</p>
-        <p className="text-sm text-muted-foreground mt-2">
-          Transcriptome summary for patient sample <span className="font-semibold text-foreground">{sample.patientId}</span>, 
-          Library size: <span className="font-semibold text-foreground">118.8 M reads</span>.
-        </p>
+        <PdfExportButton contentId="report-content" />
       </div>
       
       <div className="px-8 pb-4">
