@@ -2,95 +2,140 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* Clinical/Medical Design System for RNAsum Portal
+   Clean, trustworthy blues/teals with high contrast
+   Inspired by clinical genomics platforms
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core backgrounds - clean whites with subtle warmth */
+    --background: 210 20% 98%;
+    --foreground: 215 25% 15%;
 
+    /* Cards with subtle elevation */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 215 25% 15%;
 
+    /* Popovers */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Clinical teal/blue */
+    --primary: 195 85% 35%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Soft slate */
+    --secondary: 210 15% 93%;
+    --secondary-foreground: 215 25% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted surfaces */
+    --muted: 210 15% 95%;
+    --muted-foreground: 215 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Vibrant teal for highlights */
+    --accent: 180 65% 45%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status colors for clinical data */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --success: 142 72% 35%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+
+    /* Expression levels - for heatmaps */
+    --expression-high: 4 90% 58%;
+    --expression-low: 217 91% 60%;
+    --expression-neutral: 210 15% 85%;
+
+    /* Genomic alteration colors */
+    --mutation: 280 67% 55%;
+    --fusion: 330 81% 60%;
+    --cnv-gain: 0 72% 51%;
+    --cnv-loss: 217 91% 60%;
+
+    /* Border and inputs */
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 195 85% 35%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar */
+    --sidebar-background: 210 25% 97%;
+    --sidebar-foreground: 215 25% 25%;
+    --sidebar-primary: 195 85% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 180 40% 94%;
+    --sidebar-accent-foreground: 195 85% 25%;
+    --sidebar-border: 214 20% 90%;
+    --sidebar-ring: 195 85% 35%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 220 25% 10%;
+    --foreground: 210 20% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 25% 13%;
+    --card-foreground: 210 20% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 25% 13%;
+    --popover-foreground: 210 20% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 185 70% 50%;
+    --primary-foreground: 220 25% 10%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 20% 20%;
+    --secondary-foreground: 210 20% 90%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 20% 18%;
+    --muted-foreground: 215 15% 60%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 180 55% 45%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --success: 142 60% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 85% 55%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 199 80% 55%;
+    --info-foreground: 0 0% 100%;
+
+    --expression-high: 4 80% 55%;
+    --expression-low: 217 80% 55%;
+    --expression-neutral: 220 15% 40%;
+
+    --mutation: 280 60% 60%;
+    --fusion: 330 70% 60%;
+    --cnv-gain: 0 65% 55%;
+    --cnv-loss: 217 80% 55%;
+
+    --border: 220 20% 22%;
+    --input: 220 20% 22%;
+    --ring: 185 70% 50%;
+
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 185 70% 50%;
+    --sidebar-primary-foreground: 220 25% 10%;
+    --sidebar-accent: 220 20% 15%;
+    --sidebar-accent-foreground: 185 60% 60%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 185 70% 50%;
   }
 }
 
@@ -100,6 +145,94 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Mono font for genomic data */
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  /* Clinical stat cards */
+  .stat-card {
+    @apply bg-card rounded-lg border border-border p-4 shadow-sm transition-shadow hover:shadow-md;
+  }
+
+  .stat-value {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+
+  .stat-label {
+    @apply text-sm text-muted-foreground font-medium;
+  }
+
+  /* Expression heatmap cells */
+  .heatmap-cell {
+    @apply rounded-sm transition-all duration-150 hover:ring-2 hover:ring-primary/50 cursor-pointer;
+  }
+
+  /* Gene cards */
+  .gene-card {
+    @apply bg-card rounded-lg border border-border p-4 transition-all hover:border-primary/50 hover:shadow-md;
+  }
+
+  /* Section headers */
+  .section-header {
+    @apply text-lg font-semibold text-foreground flex items-center gap-2 mb-4;
+  }
+
+  /* Clinical badges */
+  .badge-mutation {
+    @apply bg-[hsl(var(--mutation))] text-white;
+  }
+
+  .badge-fusion {
+    @apply bg-[hsl(var(--fusion))] text-white;
+  }
+
+  .badge-cnv-gain {
+    @apply bg-[hsl(var(--cnv-gain))] text-white;
+  }
+
+  .badge-cnv-loss {
+    @apply bg-[hsl(var(--cnv-loss))] text-white;
+  }
+
+  /* Table styling for genomic data */
+  .genomic-table {
+    @apply w-full text-sm;
+  }
+
+  .genomic-table th {
+    @apply bg-muted px-4 py-3 text-left font-medium text-muted-foreground uppercase tracking-wider text-xs;
+  }
+
+  .genomic-table td {
+    @apply px-4 py-3 border-b border-border;
+  }
+
+  .genomic-table tr:hover td {
+    @apply bg-muted/50;
+  }
+
+  /* Z-score indicator */
+  .zscore-high {
+    @apply text-[hsl(var(--expression-high))] font-semibold;
+  }
+
+  .zscore-low {
+    @apply text-[hsl(var(--expression-low))] font-semibold;
+  }
+
+  /* Navigation tabs */
+  .nav-tab {
+    @apply px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground border-b-2 border-transparent;
+  }
+
+  .nav-tab-active {
+    @apply text-primary border-primary;
   }
 }
