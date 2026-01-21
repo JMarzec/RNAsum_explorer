@@ -1,15 +1,14 @@
-import { SampleInfo } from '@/data/mockRNAsumData';
 import { ChevronDown } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { useState } from 'react';
 import { PdfExportButton } from './PdfExportButton';
+import { FileUploadButton } from './FileUploadButton';
+import { usePatientData } from '@/contexts/PatientDataContext';
 
-interface ReportHeaderProps {
-  sample: SampleInfo;
-}
-
-export function ReportHeader({ sample }: ReportHeaderProps) {
+export function ReportHeader() {
   const [isOpen, setIsOpen] = useState(false);
+  const { data } = usePatientData();
+  const sample = data.sampleInfo;
 
   return (
     <header className="border-b border-border bg-card">
@@ -17,7 +16,10 @@ export function ReportHeader({ sample }: ReportHeaderProps) {
         <h1 className="text-3xl font-bold text-foreground">
           Patient Molecular Profiling
         </h1>
-        <PdfExportButton contentId="report-content" />
+        <div className="flex items-center gap-3">
+          <FileUploadButton />
+          <PdfExportButton contentId="report-content" />
+        </div>
       </div>
       
       <div className="px-8 pb-4">
