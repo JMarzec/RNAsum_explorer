@@ -1,8 +1,9 @@
 import { SectionContainer, SubSection, CollapsibleLegend } from './SectionContainer';
 import { DataTableControls } from './DataTableControls';
 import { ExpressionProfiles } from './ExpressionProfilePlot';
+import { CircosPlot } from './CircosPlot';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Check, X } from 'lucide-react';
+import { Check, X } from 'lucide-react';
 import { geneFusions, geneExpressions } from '@/data/mockRNAsumData';
 import { useState } from 'react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
@@ -173,10 +174,7 @@ export function FusionGenesSection() {
           between different chromosomes.
         </p>
         
-        <div className="bg-muted/30 rounded-lg p-8 text-center text-muted-foreground border border-dashed border-border">
-          <p>Circos plot visualization</p>
-          <p className="text-xs mt-1">(Genomic coordinates view available in full report)</p>
-        </div>
+        <CircosPlot width={450} height={450} />
       </SubSection>
 
       <SubSection title="Fusion genes expression">
