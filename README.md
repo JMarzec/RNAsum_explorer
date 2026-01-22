@@ -140,5 +140,5 @@ This project is developed by UMCCR. See the original [RNAsum repository](https:/
 ---
 
 <p align="center">
-  Built with ❤️ by <a href="https://research.unimelb.edu.au/umccr">UMCCR</a>
+  Built with ❤️ by <a href="https://genomic-cancer-medicine.unimelb.edu.au/">Collaborative Centre for Genomic Cancer Medicine</a>
 </p>
