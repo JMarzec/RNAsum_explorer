@@ -40,7 +40,7 @@ const sections = [
 
 export function ReportSidebar({ activeSection, onSectionChange }: ReportSidebarProps) {
   return (
-    <nav className="w-56 flex-shrink-0 bg-card border-r border-border overflow-y-auto">
+    <nav className="w-56 flex-shrink-0 bg-card border-r border-border overflow-y-auto sticky top-0 h-screen">
       <div className="p-2">
         {sections.map((section) => (
           <button

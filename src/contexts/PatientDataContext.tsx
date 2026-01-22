@@ -49,12 +49,26 @@ const defaultData: PatientData = {
 
 const PatientDataContext = createContext<PatientDataContextType | undefined>(undefined);
 
+const STORAGE_KEY = 'rnasum-patient-data';
+
 export function PatientDataProvider({ children }: { children: ReactNode }) {
-  const [data, setData] = useState<PatientData>(defaultData);
-  const [isCustomData, setIsCustomData] = useState(false);
+  const [data, setData] = useState<PatientData>(() => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      try {
+        return JSON.parse(stored);
+      } catch {
+        return defaultData;
+      }
+    }
+    return defaultData;
+  });
+  const [isCustomData, setIsCustomData] = useState(() => {
+    return localStorage.getItem(STORAGE_KEY) !== null;
+  });
 
   const loadData = (jsonData: Partial<PatientData>) => {
-    setData({
+    const newData = {
       sampleInfo: jsonData.sampleInfo || defaultData.sampleInfo,
       summaryStats: jsonData.summaryStats || defaultData.summaryStats,
       geneExpressions: jsonData.geneExpressions || defaultData.geneExpressions,
@@ -63,12 +77,15 @@ export function PatientDataProvider({ children }: { children: ReactNode }) {
       cnvGenes: jsonData.cnvGenes || defaultData.cnvGenes,
       drugMatches: jsonData.drugMatches || defaultData.drugMatches,
       immuneMarkers: jsonData.immuneMarkers || defaultData.immuneMarkers,
-    });
+    };
+    setData(newData);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(newData));
     setIsCustomData(true);
   };
 
   const resetToDefault = () => {
     setData(defaultData);
+    localStorage.removeItem(STORAGE_KEY);
     setIsCustomData(false);
   };
 
