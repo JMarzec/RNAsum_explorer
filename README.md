@@ -1,73 +1,144 @@
-# Welcome to your Lovable project
+# RNAsum Explorer
 
-## Project info
+<p align="center">
+  <strong>🧬 Interactive Visualization Dashboard for RNAsum Reports</strong>
+</p>
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+<p align="center">
+  A modern React-based web application for exploring and interpreting RNA sequencing analysis outputs from <a href="https://github.com/umccr/RNAsum">RNAsum</a>.
+</p>
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## ✨ Features
 
-**Use Lovable**
+### 📊 Comprehensive Molecular Profiling
+- **Findings Summary** — Consolidated view of all altered genes with section presence indicators
+- **Mutated Genes** — Tiered variant classifications with expression context
+- **Fusion Genes** — Interactive Circos plot visualization of fusion events
+- **Structural Variants** — Expression profiles for SV-affected genes
+- **Copy Number Alterations** — Gain/loss visualization with Z-scores
+- **Immune Markers** — PD-L1, TMB, and immune infiltration metrics
+- **HRD Genes** — Homologous recombination deficiency gene panel
+- **Cancer Genes** — Oncogene and tumor suppressor expression profiles
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### 🔗 Clinical Resources Integration
+Direct links to genomic knowledge bases:
+- [VICC](https://search.cancervariants.org/)
+- [OncoKB](https://www.oncokb.org/)
+- [CIViC](https://civicdb.org/)
+- [COSMIC](https://cancer.sanger.ac.uk/cosmic)
+- [FusionGDB](https://ccsm.uth.edu/FusionGDB/)
 
-Changes made via Lovable will be committed automatically to this repo.
+### 📁 Data Management
+- **JSON Upload** — Load custom patient data with built-in schema validation
+- **Template Download** — Get a sample JSON template to structure your data
+- **Persistence** — Uploaded data survives page refreshes via localStorage
+- **PDF Export** — Generate multi-page PDF reports for clinical review
 
-**Use your preferred IDE**
+### 🎨 Modern UI/UX
+- Sticky sidebar navigation for easy section access
+- Responsive design with light/dark mode support
+- Interactive charts and visualizations (Recharts)
+- Searchable and filterable data tables
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🚀 Quick Start
 
-Follow these steps:
+### Prerequisites
+- Node.js 18+ and npm
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Installation
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+```bash
+# Clone the repository
+git clone https://github.com/umccr/rnasum-explorer.git
+cd rnasum-explorer
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Visit `http://localhost:5173` to view the application.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 📦 Technology Stack
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+| Category | Technologies |
+|----------|-------------|
+| **Framework** | React 18 + TypeScript |
+| **Build Tool** | Vite |
+| **Styling** | Tailwind CSS + shadcn/ui |
+| **Charts** | Recharts |
+| **PDF Export** | html2canvas + jsPDF |
+| **State** | React Context + localStorage |
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 📄 Data Format
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The application accepts JSON files matching the `PatientData` schema:
 
-## How can I deploy this project?
+```typescript
+interface PatientData {
+  sampleInfo: {
+    sampleId: string;
+    patientId: string;
+    cancerType: string;
+    referenceCohort: string;
+    analysisDate: string;
+    libraryId: string;
+    purity: number;      // 0-1
+    ploidy: number;
+  };
+  geneExpressions: GeneExpression[];
+  geneFusions: GeneFusion[];
+  mutatedGenes: MutatedGene[];
+  cnvGenes: CNVGene[];
+  drugMatches: DrugMatch[];
+  immuneMarkers: ImmuneMarker[];
+}
+```
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Use the **"Download Template"** button in the app to get a complete example.
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## 🔬 About RNAsum
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+[RNAsum](https://github.com/umccr/RNAsum) is an R package developed by the **University of Melbourne Centre for Cancer Research (UMCCR)** for integrating whole-genome sequencing (WGS) and whole-transcriptome sequencing (WTS) data from cancer patients.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+This dashboard provides a modern, interactive frontend for exploring RNAsum outputs, designed for:
+- Clinical genomics teams
+- Molecular tumor boards
+- Research scientists analyzing cancer transcriptomics
+
+---
+
+## 📚 Documentation
+
+- [RNAsum Documentation](https://umccr.github.io/RNAsum/)
+- [RNAsum GitHub](https://github.com/umccr/RNAsum)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit issues and pull requests.
+
+---
+
+## 📝 License
+
+This project is developed by UMCCR. See the original [RNAsum repository](https://github.com/umccr/RNAsum) for licensing information.
+
+---
+
+<p align="center">
+  Built with ❤️ by <a href="https://research.unimelb.edu.au/umccr">UMCCR</a>
+</p>
