@@ -8,6 +8,10 @@
   A modern React-based web application for exploring and interpreting RNA sequencing analysis outputs from <a href="https://github.com/umccr/RNAsum">RNAsum</a>.
 </p>
 
+<p align="center">
+  <img src="docs/images/dashboard-screenshot.png" alt="RNAsum Explorer Dashboard" width="100%" />
+</p>
+
 ---
 
 ## ✨ Features
