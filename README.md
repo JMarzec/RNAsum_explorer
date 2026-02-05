@@ -9,8 +9,10 @@
 </p>
 
 <p align="center">
-  <img src="docs/images/dashboard-screenshot.png" alt="RNAsum Explorer Dashboard" width="100%" />
+  <img src="docs/images/dashboard-demo.gif" alt="RNAsum Explorer Dashboard Demo" width="100%" />
 </p>
+
+> 💡 *The demo above shows: navigating between sections, filtering data tables, and viewing the interactive Circos plot for fusion genes.*
 
 ---
 
